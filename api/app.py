@@ -56,17 +56,19 @@ async def getstate():
     currentstate = await db["states"].find().to_list(1)
     currentsettings = await db["settings"].find().to_list(1)
 
-    fanstate = ((float(currentstate[0]["temperature"])>float(currentsettings[0]["user_temp"])) and (currentstate[0]["presence"]))  #Watch Formatting here
-
+    presence = currentstate[0]["presence"]
     timenow=datetime.strptime(datetime.strftime(datetime.now(),'%H:%M:%S'),'%H:%M:%S')
     userlight=datetime.strptime(currentsettings[0]["user_light"],'%H:%M:%S')
     lightoff=datetime.strptime(currentsettings[0]["light_time_off"],'%H:%M:%S')
 
-    lightstate = (timenow>userlight) and ((currentstate[0]["presence"])) and (timenow<lightoff)
+    fanstate = ((float(currentstate[0]["temperature"])>float(currentsettings[0]["user_temp"])) and presence)  #Watch Formatting here
+    lightstate = (timenow>userlight) and (presence) and (timenow<lightoff)
+    
     #Print Statements for Debugging
     print(datetime.strftime(datetime.now(),'%H:%M:%S'))
     print(currentsettings[0]["user_light"])
     print(currentsettings[0]["light_time_off"])
+    print(presence)
 
     Dictionary ={"fan":fanstate, "light":lightstate}
     return Dictionary
