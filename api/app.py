@@ -52,8 +52,8 @@ async def set_state(request:Request):
 #GET /data
 @app.get("/api/state")
 async def getstate():
-
-    currentstate = await db["states"].collection.find().skip((db["states"].collection.count()) - (db["states"].collection.count()-1)).to_list(1)
+    currentstate = await db["states"].find().sort({"datetime":-1}).to_list(1)
+    #currentstate = await db["states"].find().skip((db["states"].collection.count()) - (db["states"].collection.count()-1)).to_list(1)
     currentsettings = await db["settings"].find().to_list(1)
 
     presence = currentstate[0]["presence"]
@@ -85,7 +85,8 @@ def sunset():
 @app.get("/graph", status_code=200)
 async def graphpoints(request:Request,size: int):
     n = size
-    statearray = await db["states"].collection.find().skip((db["states"].collection.count()) - n).to_list(n)
+    statearray = await db["states"].find().sort({"datetime":-1}).to_list(n)
+    #statearray = await db["states"].find().skip((db["states"].collection.count()) - n).to_list(n)
     #statearray = await db["states"].find().to_list(n)
     return statearray
 
