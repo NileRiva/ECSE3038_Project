@@ -3,12 +3,20 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include "env.h"
+#include <OneWire.h>
+#include <DallasTemperature.h>
 
-const char* putendpoint = API_URL_PUT;
+const char* postendpoint = API_URL_POST;
 const char* getendpoint = API_URL_GET;
+
+#define ONE_WIRE_BUS 2
+OneWire oneWire(ONE_WIRE_BUS);
+DallasTemperature sensors(&oneWire);	
 
 const int fanpin = 22;
 const int lightpin = 23;
+const int pirpin = 15;
+int pirstate;
 
 float float_rand(float min,float max)
 {
@@ -17,9 +25,12 @@ float float_rand(float min,float max)
 }
 
 void setup() {
+  sensors.begin();
   Serial.begin(9600);
   pinMode(fanpin, OUTPUT);
   pinMode(lightpin, OUTPUT);
+  pinMode(pirpin,INPUT);
+  pinMode(ONE_WIRE_BUS,INPUT);
 
   WiFi.begin(WIFI_USER, WIFI_PASS);
   Serial.println("Connecting");
@@ -34,32 +45,53 @@ void setup() {
 
 
 void loop() {
-//PUT Request
+
+//READ TEMPERATURE
+// Send the command to get temperatures
+  sensors.requestTemperatures(); 
+
+  //print the temperature in Celsius
+  Serial.print("Temperature: ");
+  float temp = sensors.getTempCByIndex(0);
+  temp = sensors.getTempCByIndex(0);
+  Serial.print(temp);
+  Serial.print((char)176);//shows degrees character
+  Serial.print("C  |  "); 
+  pirstate = digitalRead(pirpin);
+  Serial.print("\n");
+  Serial.print("");
+  Serial.print(pirstate);
+  Serial.println("");
+  
+//POST Request
   if(WiFi.status()== WL_CONNECTED){   
     
     HTTPClient http;
     String http_response;
 
-    //PUT REQUEST
-    http.begin(putendpoint);
+    //POST REQUEST
+    http.begin(postendpoint);
     http.addHeader("Content-Type", "application/json");
 
-    StaticJsonDocument<1024> putdoc; // Empty JSONDocument
+    StaticJsonDocument<1024> postdoc; // Empty JSONDocument
     String httpRequestData; // Emtpy string to be used to store HTTP request data string
 
-    putdoc["temperature"]=float_rand(21.0,33.0);
-    serializeJson(putdoc, httpRequestData);
+    postdoc["temperature"]=float_rand(21.0,33.0);
+    postdoc["presence"]=pirstate;
+    serializeJson(postdoc, httpRequestData);
 
-    int PUTResponseCode = http.PUT(httpRequestData);
+    int POSTResponseCode = http.POST(httpRequestData);
 
 
-    if (PUTResponseCode>0) {
+    if (POSTResponseCode>0) {
         Serial.print("Response:");
-        Serial.print(PUTResponseCode);}
+        Serial.print(POSTResponseCode);}
 
     else {
         Serial.print("Error: ");
-        Serial.println(PUTResponseCode);}
+
+
+        Serial.println(POSTResponseCode);}
       
       http.end();
       
