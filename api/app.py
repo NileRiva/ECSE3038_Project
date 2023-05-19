@@ -86,6 +86,7 @@ def sunset():
 async def graphpoints(request:Request,size: int):
     n = size
     statearray = await db["states"].find().sort("datetime",-1).to_list(n)
+    statearray.reverse()
     #statearray = await db["states"].find().skip((db["states"].collection.count()) - n).to_list(n)
     #statearray = await db["states"].find().to_list(n)
     return statearray
