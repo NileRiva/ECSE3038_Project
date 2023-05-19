@@ -53,7 +53,7 @@ async def set_state(request:Request):
 @app.get("/api/state")
 async def getstate():
 
-    currentstate = await db["states"].find().to_list(1)
+    currentstate = await db["states"].getLastInsertedDocument.find({}).sort({_id:-1}).limit(1)
     currentsettings = await db["settings"].find().to_list(1)
 
     presence = currentstate[0]["presence"]

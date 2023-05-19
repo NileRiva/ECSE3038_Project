@@ -75,9 +75,9 @@ void loop() {
 
     StaticJsonDocument<1024> postdoc; // Empty JSONDocument
     String httpRequestData; // Emtpy string to be used to store HTTP request data string
-
+    
     postdoc["temperature"]=float_rand(21.0,33.0);
-    postdoc["presence"]=pirstate;
+    postdoc["presence"]=!pirstate;
     serializeJson(postdoc, httpRequestData);
 
     int POSTResponseCode = http.POST(httpRequestData);
