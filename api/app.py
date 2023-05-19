@@ -41,7 +41,7 @@ app.add_middleware(
 async def set_state(request:Request):
     
     state = await request.json()
-    state["datetime"]=datetime.now().strftime('%Y-%m-%dT%H:%M:%S')
+    state["datetime"]=(datetime.now()+timedelta(hours=-5)).strftime('%Y-%m-%dT%H:%M:%S')
 
     new_state = await db["states"].insert_one(state)
     updated_state = await db["states"].find_one({"_id": new_state.inserted_id }) #updated_tank.upserted_id
@@ -57,7 +57,7 @@ async def getstate():
     currentsettings = await db["settings"].find().to_list(1)
 
     presence = currentstate[0]["presence"]
-    timenow=datetime.strptime(datetime.strftime(datetime.now(),'%H:%M:%S'),'%H:%M:%S')
+    timenow=datetime.strptime(datetime.strftime(datetime.now()+timedelta(hours=-5),'%H:%M:%S'),'%H:%M:%S')
     userlight=datetime.strptime(currentsettings[0]["user_light"],'%H:%M:%S')
     lightoff=datetime.strptime(currentsettings[0]["light_time_off"],'%H:%M:%S')
 
@@ -65,7 +65,7 @@ async def getstate():
     lightstate = (timenow>userlight) and (presence) and (timenow<lightoff)
     
     #Print Statements for Debugging
-    print(datetime.strftime(datetime.now(),'%H:%M:%S'))
+    print(datetime.strftime(datetime.now()+timedelta(hours=-5),'%H:%M:%S'))
     print(currentsettings[0]["user_light"])
     print(currentsettings[0]["light_time_off"])
     print(presence)
