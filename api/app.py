@@ -26,7 +26,7 @@ db2 = client.settingsdb
 
 pydantic.json.ENCODERS_BY_TYPE[ObjectId]=str
 
-origins = ["https://nilelab6.onrender.com","https://simple-smart-hub-client.netlify.app/"]
+origins = ["https://simple-smart-hub-client.netlify.app"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -67,7 +67,7 @@ async def getstate():
     print(datetime.strftime(datetime.now(),'%H:%M:%S'))
     print(currentsettings[0]["user_light"])
     print(currentsettings[0]["light_time_off"])
-    
+
     Dictionary ={"fan":fanstate, "light":lightstate}
     return Dictionary
 
