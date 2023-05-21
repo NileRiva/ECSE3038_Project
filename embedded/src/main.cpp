@@ -9,7 +9,7 @@
 const char* postendpoint = API_URL_POST;
 const char* getendpoint = API_URL_GET;
 
-#define ONE_WIRE_BUS 2
+#define ONE_WIRE_BUS 4
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);	
 
@@ -76,7 +76,7 @@ void loop() {
     StaticJsonDocument<1024> postdoc; // Empty JSONDocument
     String httpRequestData; // Emtpy string to be used to store HTTP request data string
     
-    postdoc["temperature"]=float_rand(21.0,33.0);
+    postdoc["temperature"]=temp;
     postdoc["presence"]=!pirstate;
     serializeJson(postdoc, httpRequestData);
 
