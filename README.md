@@ -55,10 +55,10 @@ This data can then be used to plot graphs on the webpage, showing how the temper
 
 By having access to this historical data, users can gain insights into how the temperature varies in the room, which can help them make more informed decisions about when to turn on the fan or adjust the thermostat. Moreover, the ability to visualize the temperature data in a graphical form can help users better understand the relationship between the temperature and the fan's performance, which can lead to improved energy efficiency and a more comfortable living environment.
 
-Use this webapp to test your API:
+Use this render link to test my API:
 
 ```
-https://simple-smart-hub-client.netlify.app/
+https://nileiotproject.onrender.com
 ```
 
 ### IMPORTANT
