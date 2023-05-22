@@ -158,3 +158,13 @@ def parse_time(time_str):
     return timedelta(**time_params)
 ```
 ![Alt text](https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0b42bde3-726e-4f7c-89d6-010eec46aaa0/dcw6qmf-62319398-6abf-4a8c-953c-7128d9db83bd.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzBiNDJiZGUzLTcyNmUtNGY3Yy04OWQ2LTAxMGVlYzQ2YWFhMFwvZGN3NnFtZi02MjMxOTM5OC02YWJmLTRhOGMtOTUzYy03MTI4ZDlkYjgzYmQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.JbbYrDkZqVN0AVSV3xs9WXI7cI7ZtYGeUqM5stjXcPE)
+
+![Alt text](https://media.tenor.com/4bYNUU5IcTEAAAAd/nigelthornberryvp-nigel.gif)
+
+##We Evolved !
+
+![Alt text](https://media.licdn.com/dms/image/C4D03AQFVKqRsCnT_uA/profile-displayphoto-shrink_800_800/0/1662708374059?e=2147483647&v=beta&t=MjB0bGxo1p7k6_L0fpbwCBcfD1CXhYEMGfLDkl3BX18)
+
+##Thanks to the Best Pokemon Trainer in all of UWI !
+
+![Alt Text](https://drive.google.com/file/d/1w72X9prwbHGWlit8-dVWO1p668-p-c5p/view?usp=sharing)
