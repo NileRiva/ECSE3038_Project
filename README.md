@@ -165,6 +165,6 @@ def parse_time(time_str):
 
 ![Alt text](https://media.licdn.com/dms/image/C4D03AQFVKqRsCnT_uA/profile-displayphoto-shrink_800_800/0/1662708374059?e=2147483647&v=beta&t=MjB0bGxo1p7k6_L0fpbwCBcfD1CXhYEMGfLDkl3BX18)
 
-##Thanks to the Best Pokemon Trainer in all of UWI !
+##Thanks to the Freshest Pokemon Trainer in all of UWI !
 
 ![Alt Text](https://drive.google.com/file/d/1w72X9prwbHGWlit8-dVWO1p668-p-c5p/view?usp=sharing)
