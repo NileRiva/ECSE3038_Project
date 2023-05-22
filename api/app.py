@@ -104,7 +104,7 @@ async def setting(request:Request):
     else:
         timestring = setting["user_light"]
 
-    mod_setting["user_light"]=(datetime.now().date()).strftime("%Y-%m-%dT")+timestring
+    mod_setting["user_light"]=((datetime.now()+timedelta(hours=-5)).date()).strftime("%Y-%m-%dT")+timestring
     mod_setting["light_time_off"]= ((datetime.strptime(mod_setting["user_light"],'%Y-%m-%dT%H:%M:%S')+parse_time(setting["light_duration"])).strftime('%Y-%m-%dT%H:%M:%S'))
     print(mod_setting["user_light"])
     print(mod_setting["light_time_off"])
