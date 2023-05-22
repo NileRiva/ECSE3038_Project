@@ -16,7 +16,7 @@ DallasTemperature sensors(&oneWire);
 const int fanpin = 22;
 const int lightpin = 23;
 const int pirpin = 15;
-int pirstate;
+bool pirstate;
 
 float float_rand(float min,float max)
 {
@@ -77,7 +77,7 @@ void loop() {
     String httpRequestData; // Emtpy string to be used to store HTTP request data string
     
     postdoc["temperature"]=temp;
-    postdoc["presence"]=!pirstate;
+    postdoc["presence"]=pirstate;
     serializeJson(postdoc, httpRequestData);
 
     int POSTResponseCode = http.POST(httpRequestData);
